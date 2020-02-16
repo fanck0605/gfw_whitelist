@@ -1,0 +1,18 @@
+language: python
+
+python:
+  - "3.7"
+
+install:
+  - pip install -r resources/requirements.txt
+
+script:
+  - python chnroute.py --output "gh-pages/chnroute.pac" --proxy "SOCKS5 127.0.0.1:1080; PROXY 127.0.0.1:1080; DIRECT;"
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: gh-pages
+  on:
+    branch: master
