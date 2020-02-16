@@ -20,9 +20,9 @@ Switch to [`gh-pages`](https://github.com/fanck0605/gfw_whitelist/tree/gh-pages)
 Download the [`chnroute.pac`](https://raw.githubusercontent.com/fanck0605/gfw_whitelist/gh-pages/chnroute.pac),
 edit the server IP and the type of proxy. After that change your browser's config, point to `chnroute.pac`.
 
-	// Change the type of proxy, it also can be 'HTTPS'
+    // Change the type of proxy, it also can be 'HTTPS'
     // Make sure to change both SOCKS5 and SOCKS
-	var proxy = "SOCKS5 127.0.0.1:1080; SOCKS 127.0.0.1:1080;",
+    var proxy = "SOCKS5 127.0.0.1:1080; SOCKS 127.0.0.1:1080;",
 
 ### Use script to generate the PAC file
 
