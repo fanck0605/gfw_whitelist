@@ -17,21 +17,24 @@ This project location: [https://github.com/fanck0605/chnroute2pac](https://githu
 
 ## How to use
 
+### Use auto-generated PAC file
+
 Switch to [`gh-pages`](https://github.com/fanck0605/chnroute2pac/tree/gh-pages)
-branch to download latest pac file
+branch to download latest pac file. [Travis CI](https://travis-ci.org/) will
+update PAC file daily
 
 Download the [`chnroute.pac`](https://raw.githubusercontent.com/fanck0605/chnroute2pac/gh-pages/chnroute.pac),
-edit the server IP and the type of proxy. After that change your browser's config,
-point to `chnroute.pac`.
+edit the server IP and the type of proxy. After that change your browser's
+config, point to `chnroute.pac`.
 
     // Change the type of proxy, it also can be 'HTTPS'
     // Make sure to change both SOCKS5 and SOCKS
     var proxy = "SOCKS5 127.0.0.1:1080; SOCKS 127.0.0.1:1080;",
 
-### Use script to generate the PAC file
+### Generate a PAC file using script
 
-Excute command `python3 chnroute.py --output chnroute.pac`, `chnroute.pac` will
-updated.
+Excute command `python3 chnroute.py --output chnroute.pac`, `chnroute.pac`
+will updated.
 
 ## PAC performance (100,000 repeat)
 
