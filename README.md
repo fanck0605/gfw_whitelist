@@ -41,7 +41,7 @@ updated.
 
 ## Based on
 
-[breakwa11 chnroute2pac](https://github.com/breakwa11/chnroute2pac)  
+[breakwa11 gfw_whitelist](https://github.com/breakwa11/gfw_whitelist)  
 [R0uter gfw_domain_whitelist](https://github.com/R0uter/gfw_domain_whitelist)  
 [clowwindy gfwlist2pac](https://github.com/clowwindy/gfwlist2pac)
 
