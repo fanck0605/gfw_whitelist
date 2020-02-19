@@ -26,9 +26,9 @@ def parse_args():
     return parser.parse_args()
 
 
-def get_file_data(filename):
+def get_file_data(path):
     # must be a text file
-    with open(filename, 'r', encoding='utf8') as f:
+    with open(path, 'r', encoding='utf8') as f:
         content = f.read()
     return content
 
@@ -48,17 +48,16 @@ def decode_gfwlist(content):
     # decode base64 if have to
     if '.' in content:
         return content
-    bytes = base64.b64decode(content)
-    return bytes.decode('utf-8')
+    content = base64.b64decode(content)
+    return content.decode('utf-8')
 
 
-def add_domain_to_set(set, something):
+def get_hostname(url_path):
     try:
-        url = 'http://' + something
-        result = urlparse.urlparse(url)
-        hostname = result.hostname
-        if hostname:
-            set.add(hostname.encode('idna').decode('utf-8'))
+        url = 'http://' + url_path
+        hostname = urlparse.urlparse(url).hostname
+        # convert to punycode
+        return hostname.encode('idna').decode('utf-8')
     except Exception as e:
         logging.error(e)
 
@@ -67,7 +66,7 @@ def parse_gfwlist(content):
     domains = set()
     for line in content.splitlines(False):
         if not line:
-            # ignore null line or ''
+            # ignore null or ''
             continue
         if line.startswith('!'):
             # ignore comment
@@ -103,7 +102,9 @@ def parse_gfwlist(content):
         line = line.lstrip('http://')
         line = line.lstrip('https://')
         line = line.lstrip('.')
-        add_domain_to_set(domains, line)
+        hostname = get_hostname(line)
+        if hostname:
+            domains.add(hostname)
     return reduce_domains(domains)
 
 
@@ -111,7 +112,7 @@ def parse_tlds(content):
     tlds = set()
     for line in content.splitlines(False):
         if not line:
-            # ignore null line or ''
+            # ignore null or ''
             continue
         if line.startswith('//'):
             # ignore comment
