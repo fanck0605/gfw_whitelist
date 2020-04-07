@@ -10,7 +10,7 @@ from argparse import ArgumentParser
 
 import urllib3
 
-gfwlist_url = 'https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt'
+gfwlist_url = 'https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt'
 chnroute_url = 'https://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest'
 tlds_url = 'https://publicsuffix.org/list/public_suffix_list.dat'
 
